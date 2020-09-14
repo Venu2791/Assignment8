@@ -8,7 +8,7 @@ import inspect
 import re
 
 CONTENT_CHECK = [
-    'closure'
+    'closure',
     'doc'
 ]
 
