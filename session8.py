@@ -8,7 +8,7 @@ def some_function():
 
     Returns:
     int:Returning value
-   """
+    """
 
 def doc_string_outer():
     char_len = 50
