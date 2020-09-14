@@ -2,7 +2,7 @@
 import pytest
 import random
 import string
-import session6
+import session8
 import os
 import inspect
 import re
@@ -41,13 +41,13 @@ def test_readme_file_for_formatting():
 def test_indentations():
     ''' Returns pass if used four spaces for each level of syntactically \
     significant indenting.'''
-    lines = inspect.getsource(session6)
+    lines = inspect.getsource(session8)
     spaces = re.findall('\n +.', lines)
     for space in spaces:
         assert len(space) % 4 == 2, "Your script contains misplaced indentations"
         assert len(re.sub(r'[^ ]', '', space)) % 4 == 0, "Your code indentation does not follow PEP8 guidelines" 
 
 def test_function_name_had_cap_letter():
-    functions = inspect.getmembers(session6, inspect.isfunction)
+    functions = inspect.getmembers(session8, inspect.isfunction)
     for function in functions:
         assert len(re.findall('([A-Z])', function[0])) == 0, "You have used Capital letter(s) in your function names"
