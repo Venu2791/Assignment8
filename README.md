@@ -1,4 +1,4 @@
-# Session 5 – Test Cases and code understanding
+# Session 8 – Closures
 ## time_it implementation using *args and **kwargs
 ### def time_it(fn, *args, repetitons= 1, **kwargs): 
 The repetitons indicate the number of times the function has to be calculated.
@@ -44,6 +44,5 @@ The repetitons indicate the number of times the function has to be calculated.
 33) Testing squared_power_list for list
 34) squared_power_list start must be lesser than end
 
-lambda
-zip
-map
+closure
+doc
