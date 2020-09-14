@@ -45,4 +45,5 @@ The repetitons indicate the number of times the function has to be calculated.
 34) squared_power_list start must be lesser than end
 
 closure
+
 doc
