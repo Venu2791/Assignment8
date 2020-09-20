@@ -81,3 +81,16 @@ counter_div(6,3)
 counter_div(6,3)
 
 counters
+
+#Q4
+
+def counter_dict(times_dict):
+    """ This function can keep a track of how many times add/mul/div functions were called,
+    and update a dictionary , specific to a user, with the counts"""
+    def inner(fn,*args, **kwargs):
+        nonlocal times_dict
+        times_dict[fn.__name__] += 1
+        print('{0} has been called {1} times'.format(fn.__name__, times_dict[fn.__name__]))
+        print(times_dict)
+        return fn(*args, **kwargs)
+    return inner
