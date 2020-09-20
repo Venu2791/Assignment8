@@ -1,13 +1,55 @@
 # Session 8 – Closures
-## time_it implementation using *args and **kwargs
-### def time_it(fn, *args, repetitons= 1, **kwargs): 
-The repetitons indicate the number of times the function has to be calculated.
-## It has these functions defined:
-1)  polygon_area : Calculates the area of polygon (sides can be 3 to 6). We have calculated the area of a regular polygon – having all the sides equal. The input is the side length and the number of sides. 
-2)  temp_converter : Converts Celsius to Fahrenheit and Fahrenheit to Celsius. The input is the temperature and the unit of the temperature given.
-3)  print : It prints the value of the input given in args with a specified separator and end.
-4)  squared_power_list : It generates a list by calculating the power of the given number. For example, if 2 is the number we are calculating power of and with start = 0 and end = 5 we get the result as [1, 2, 4, 8, 16, 32].
-5)  speed_converter : It converts the given speed in km/hr to different metrics. Here, distance can be km or m or ft or yrd and time can be ms or s or min or hr or day.
+## Closures :
+A closure is a nested function which has access to a free variable from an enclosing function that has finished its execution. Three characteristics of a Python closure are:
+
+it is a nested function
+it has access to a free variable in outer scope
+it is returned from the enclosing function
+A free variable is a variable that is not bound in the local scope. In order for closures to work with immutable variables such as numbers and strings, we have to use the nonlocal keyword.
+
+Python simple closure example:
+def make_printer(msg) :
+    
+    msg = "hi there"
+    
+    def printer() :
+        print(msg)
+
+    return printer
+
+
+myprinter = make_printer("Hello there")
+myprinter()
+myprinter()
+myprinter()
+
+In the example, we have a make_printer() function, which creates and returns a function . The nested printer() function is the closure .
+
+myprinter = make_printer("Hello there")
+The make_printer() function returns a printer() function and assigns it to the myprinter variable . At this moment , it has finished its execution. However , the printer() closure still has access to the msg variable .
+
+## Output :
+hi there
+hi there
+hi there
+
+## Q1 Write a closure that takes a function and then check whether the function passed has a doc string with more than 50 characters . 50 is stored as a free variable .
+
+Here we pass a function to the closure and count the characters in doc string . If the number of characters in the doc string is greater than 50 then the closure returns True . Else it returns False .
+
+## Q2 Write a closure that gives you the next Fibonacci number
+
+This is a classic example of closure , where when a number is given as input , it finds the next fibonacci number . If the closure function is called again it will remeber the previous fibonacci number that it returned as result and will generate and give the next fibonacci number automatically .
+
+## Q3 Write a CLOSURE that can keep a track of how many times add/mul/div functions were called, and update a global dictionary variable with the counts
+
+A global dictonary is created which keeps track of the number of times each of add or mul or div functions are called . Every time the function is called , the global dictionary is updated . 
+
+## Q4 Modify above such that now we can pass in different dictionary variables to update different dictionaries
+
+Here we create two dictionaries with the add , mul and div function names as keys and when the closure of that particular dictionary is called , only that dictionary gets updated and not the other dictionary . In this way we can differentiate between what function called the closure .
+
+
 ## Test Cases
 1)  README exists
 2)  README has at least 500 words
@@ -15,35 +57,7 @@ The repetitons indicate the number of times the function has to be calculated.
 4)  README file formatting 
 5)  Code Indentation and spaces
 6)  Function name should be in small letters
-7)  All the above 5 functions used
-8)  Repetitions in time_it function should be greater than or equal to 1
-9)  fn in time_it should be any of the 5 functions used above 
-10) polygon_area must have one positional argument
-11) temp_converter must have one positional argument
-12) speed_converter must have one positional argument
-13) squared_power_list must have one positional argument
-14) polygon_area must have one named argument
-15) temp_converter must have one named argument
-16) speed_converter must have two named arguments
-17) squared_power_list must have two named arguments
-18) polygon_area must have sides as named argument
-19) polygon_area named argument must be an integer between 3 and 6
-20) polygon_area positional argument must be a number greater than 0
-21) Testing polygon_area for equilateral triangle, square, regular pentagon and regular hexagon
-22) temp_converter must have temp_given_in as named argument
-23) temp_converter named argument must be a string ‘f’ or ‘F’ or ‘c’ or ‘C’
-24) temp_converter positional argument must be a number greater than absolute zero temperature (0K or -273.15°C or -459.67°F)
-25) Testing temp_converter for Celsius to Fahrenheit and Fahrenheit to Celsius conversion
-26) speed_converter must have dist and time as named argument
-27) speed_converter named argument must be a string (dist can be km or m or ft or yrd and time can be ms or s or min or hr or day)
-28) speed_converter positional argument must be a number greater than 0
-29) Testing speed_converter for speed conversion
-30) squared_power_list must have start and end as named argument
-31) squared_power_list named argument must be numbers
-32) squared_power_list positional argument must be a number
-33) Testing squared_power_list for list
-34) squared_power_list start must be lesser than end
-
-closure
-
-doc
+7)  Docstring in a function has more than 50 characters or not
+8)  Whether the closure gives the next fibonacci number or not
+9)  Whether the dictionary is updated with the correct number of times each of add or mul or div functions are called
+10) Whether each dictionary is updated with the correct number of times each of add or mul or div functions are called
